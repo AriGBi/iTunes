@@ -17,6 +17,9 @@ class DAO():
         for row in cursor:
             results.append(Album(**row))
 
+        cursor.close()
+        cnx.close()
+
         return results
 
     @staticmethod
@@ -32,4 +35,6 @@ class DAO():
             if row["a1"] in idMapAlbum and row["a2"] in idMapAlbum:
                 results.append((idMapAlbum[row["a1"]], idMapAlbum[row["a2"]]))
 
+        cursor.close()
+        cnx.close()
         return results
